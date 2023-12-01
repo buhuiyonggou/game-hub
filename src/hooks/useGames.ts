@@ -1,11 +1,11 @@
-import Reac, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import apiCilent from "../services/api-cilent";
-import { isInstance } from "class-validator";
 import { CanceledError } from "axios";
 
-interface Game {
+export interface Game {
   id: number;
   name: string;
+  background_image: string;
 }
 
 interface FetchGamesResponse {
