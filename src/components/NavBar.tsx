@@ -1,5 +1,5 @@
 import { HStack, Image } from "@chakra-ui/react";
-import MyAnimeList from "../assets/myanimelist.png";
+import ign from "../assets/ign.jpeg";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
 
@@ -10,7 +10,7 @@ interface Props {
 const NavBar = ({ onSearch }: Props) => {
   return (
     <HStack padding="10px">
-      <Image src={MyAnimeList} boxSize="60px" />
+      <Image src={ign} boxSize="60px" />
       <SearchInput onSearch={onSearch} />
       <ColorModeSwitch />
     </HStack>
