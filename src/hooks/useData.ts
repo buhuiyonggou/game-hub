@@ -2,18 +2,13 @@ import { CanceledError } from "axios";
 import { useState, useEffect } from "react";
 import apiCilent from "../services/api-cilent";
 
-interface Genre {
-  id: number;
-  name: string;
-}
-
-interface FetchGenresResponse {
+interface FetchResponse<T> {
   count: number;
-  results: Genre[];
+  results: T[];
 }
 
-const useGenre = () => {
-  const [genres, setGenres] = useState<Genre[]>([]);
+const useData = <T>(endpoint: string) => {
+  const [data, setData] = useState<T[]>([]);
   const [errors, setErrors] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -22,9 +17,9 @@ const useGenre = () => {
 
     setIsLoading(true);
     apiCilent
-      .get<FetchGenresResponse>("/genres", { signal: controller.signal })
+      .get<FetchResponse<T>>(endpoint, { signal: controller.signal })
       .then((response) => {
-        setGenres(response.data.results);
+        setData(response.data.results);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -36,7 +31,7 @@ const useGenre = () => {
     return () => controller.abort();
   }, []);
 
-  return { genres, errors, isLoading };
+  return { data, errors, isLoading };
 };
 
-export default useGenre;
+export default useData;
