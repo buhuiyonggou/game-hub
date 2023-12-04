@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import genres from "../data/genres";
-import apiCilent from "../services/api-cilent";
-import { FetchResponse } from "../services/api-cilent";
+import APICLient from "../services/api-cilent";
+
+const apiCilent = new APICLient<Genre>("/genres");
 
 export interface Genre {
   id: number;
@@ -12,8 +13,7 @@ export interface Genre {
 const useGenres = () =>
   useQuery({
     queryKey: ["genres"],
-    queryFn: () =>
-      apiCilent.get<FetchResponse<Genre>>("/genres").then((res) => res.data),
+    queryFn: apiCilent.getAll,
     staleTime: 24 * 60 * 60 * 1000, //24 hours
     initialData: { count: genres.length, results: genres },
   });
