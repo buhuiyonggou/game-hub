@@ -1,7 +1,8 @@
-import axios, { Axios, AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
   count: number;
+  next: string | null;
   results: T[];
 }
 
@@ -19,31 +20,11 @@ class APIClient<T> {
     this.endpoint = endpoint;
   }
 
-  getAll = async (config: AxiosRequestConfig) => {
-    const res = await axiosInstance.get<FetchResponse<T>>(
-      this.endpoint,
-      config
-    );
-    return res.data;
+  getAll = (config: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<FetchResponse<T>>(this.endpoint, config)
+      .then((res) => res.data);
   };
-
-  // get = async (id: string) => {
-  //   return axiosInstance
-  //     .get<T>(`${this.endpoint}/${id}`)
-  //     .then((res) => res.data);
-  // };
-
-  // create = async (data: T) => {
-  //   return axiosInstance
-  //     .post<T>(this.endpoint, data)
-  //     .then((res) => res.data);
-  // };
-
-  // update = async (id: string, data: T) => {
-  //   return axiosInstance
-  //     .put<T>(`${this.endpoint}/${id}`, data)
-  //     .then((res) => res.data);
-  // };
 }
 
 export default APIClient;
