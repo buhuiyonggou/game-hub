@@ -1,6 +1,7 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import usePlatForms, { Platform } from "../hooks/usePlatforms";
+import usePlatForm from "../hooks/usePlatform";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
@@ -8,10 +9,11 @@ interface Props {
 }
 
 const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
-  const { data } = usePlatForms();
-  const selectedPlatform = data?.results.find(
-    (platform) => platform.id === selectedPlatformId
-  );
+  const { data, error } = usePlatForms();
+  const selectedPlatform = usePlatForm(selectedPlatformId);
+
+  if (error) return null;
+
   return (
     // make the button align from left
     <Menu>
