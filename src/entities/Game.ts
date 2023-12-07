@@ -9,6 +9,7 @@ export interface Game {
   genres: Genre[];
   description_raw: string;
   background_image: string;
+  game_pk: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
   rating_top: number;
