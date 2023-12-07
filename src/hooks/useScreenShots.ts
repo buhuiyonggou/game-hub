@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-cilent";
-import { ScreenShot } from "../entities/ScreenShot";
+import ScreenShot from "../entities/ScreenShot";
 
 const useScreenShots = (gameId: number) => {
   const apiCilent = new APIClient<ScreenShot>(`/games/${gameId}/screenshots`);
