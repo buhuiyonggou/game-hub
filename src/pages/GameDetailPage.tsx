@@ -3,13 +3,13 @@ import useGame from "../hooks/useGame";
 import { Heading, Spinner } from "@chakra-ui/react";
 import Expandable from "../components/Expandable";
 import GameAttributes from "../components/GameAttributes";
+import GameTrailer from "../components/GameTrailer";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
 
   // set a toggle to show more or less of the description
-
   if (isLoading) {
     return <Spinner />;
   }
@@ -23,6 +23,7 @@ const GameDetailPage = () => {
       <Heading>{game.name}</Heading>
       <Expandable children={game.description_raw} />
       <GameAttributes game={game} />
+      <GameTrailer gameId={game.id} />
     </>
   );
 };
