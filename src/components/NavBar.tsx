@@ -1,17 +1,19 @@
-import { HStack, Image } from "@chakra-ui/react";
+import { HStack, Image, Text } from "@chakra-ui/react";
 import ign from "../assets/ign.jpeg";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
+import { Link } from "react-router-dom";
 
-interface Props {
-  onSearch: (searchText: string) => void;
-}
-
-const NavBar = ({ onSearch }: Props) => {
+const NavBar = () => {
   return (
     <HStack padding="10px">
-      <Image src={ign} boxSize="60px" />
-      <SearchInput onSearch={onSearch} />
+      <Link to="/">
+        <Image src={ign} boxSize="60px" objectFit="cover" />
+        <Text marginLeft={1} fontWeight={"bold"}>
+          Home
+        </Text>
+      </Link>
+      <SearchInput />
       <ColorModeSwitch />
     </HStack>
   );

@@ -1,12 +1,8 @@
 import { Menu, MenuButton, Button, MenuList, MenuItem } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
+import useGameQueryStore from "../store";
 
-interface Props {
-  onSelectSortOrder: (order: string) => void;
-  sortOrder: string;
-}
-
-const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
+const SortSelector = () => {
   const sortOrders = [
     {
       value: "",
@@ -34,9 +30,12 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
     },
   ];
 
+  const selectedSortOrder = useGameQueryStore((s) => s.gameQuery.sortOrder);
   const currentSortOrder = sortOrders.find(
-    (order) => order.value === sortOrder
+    (order) => order.value === selectedSortOrder
   );
+
+  const onSelectSortOrder = useGameQueryStore((s) => s.setSortOrder);
 
   return (
     // make the button align from left

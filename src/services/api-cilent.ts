@@ -1,14 +1,16 @@
-import axios, { Axios, AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
   count: number;
+  next: string | null;
   results: T[];
 }
 
+const apiKey = import.meta.env.VITE_RAWG_API_KEY;
 const axiosInstance = axios.create({
   baseURL: "https://api.rawg.io/api",
   params: {
-    key: "f72c12a50e9249a4999caf11c067bd95",
+    key: apiKey,
   },
 });
 
@@ -27,23 +29,10 @@ class APIClient<T> {
     return res.data;
   };
 
-  // get = async (id: string) => {
-  //   return axiosInstance
-  //     .get<T>(`${this.endpoint}/${id}`)
-  //     .then((res) => res.data);
-  // };
-
-  // create = async (data: T) => {
-  //   return axiosInstance
-  //     .post<T>(this.endpoint, data)
-  //     .then((res) => res.data);
-  // };
-
-  // update = async (id: string, data: T) => {
-  //   return axiosInstance
-  //     .put<T>(`${this.endpoint}/${id}`, data)
-  //     .then((res) => res.data);
-  // };
+  get = async (id: number | string) => {
+    const res = await axiosInstance.get<T>(this.endpoint + "/" + id);
+    return res.data;
+  };
 }
 
 export default APIClient;
