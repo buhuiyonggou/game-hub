@@ -2,14 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import platforms from "../data/platforms";
 import APICLient from "../services/api-cilent";
 import ms from "ms";
+import { Platform } from "../entities/Platform";
 
 const apiCilent = new APICLient<Platform>("/platforms/lists/parents");
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
 
 const usePlatForms = () =>
   useQuery({

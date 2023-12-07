@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-cilent";
-import { Game } from "./useGames";
+import { Game } from "../entities/Game";
 
 const apiCilent = new APIClient<Game>("/games");
 
