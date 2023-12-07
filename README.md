@@ -1,4 +1,4 @@
-## Project Overview
+# Project Overview
 This project represents a comprehensive and dynamic web application focused on providing an immersive and interactive experience for video game enthusiasts. Built with the latest technologies in the field of web development, the application serves as a robust platform for exploring, searching, and engaging with a vast database of video games.
 
 # Key Concepts
