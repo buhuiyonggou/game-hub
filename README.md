@@ -3,7 +3,8 @@ This project represents a comprehensive and dynamic web application focused on p
 
 ### Link
 https://game-l9qwn98n5-buhuiyonggou.vercel.app/
-![Alt text](Game-hub/gamehub_screenshot.jpg)
+
+![Alt text](gamehub_screenshot.jpg)
 
 
 # Key Concepts
