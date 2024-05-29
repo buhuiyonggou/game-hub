@@ -3,6 +3,8 @@ This project represents a comprehensive and dynamic web application focused on p
 
 ### Link
 https://game-l9qwn98n5-buhuiyonggou.vercel.app/
+![Alt text](Game-hub/gamehub_screenshot.jpg)
+
 
 # Key Concepts
 React, Chakra UI, Zustand, Router, React Query, Responsive design, Backend Integration
